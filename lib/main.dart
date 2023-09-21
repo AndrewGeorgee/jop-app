@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_application/core/theme/theme.dart';
 import 'package:job_application/screen/getstart/get_start_view.dart';
+import 'package:job_application/screen/main_screen/main_view.dart';
 
 import 'core/utils/get.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       // builder: DevicePreview.appBuilder,
       theme: AppTheme.lightTheme(context),
 
-      home: const GetStartView(),
+      home: const MainView(),
     );
   }
 }
