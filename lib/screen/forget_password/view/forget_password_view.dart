@@ -1,9 +1,11 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:job_application/core/utils/assets.dart';
+import 'package:job_application/core/utils/nav.dart';
 
 import '../../../core/state_renderer/stete_render_impl.dart';
 import '../../../core/utils/colors.dart';
@@ -12,6 +14,7 @@ import '../../../core/utils/size.dart';
 import '../../../core/utils/styles.dart';
 import '../../../core/widget/appbar_icon_widget.dart';
 import '../../../core/widget/bottom_widget.dart';
+import '../../verify_code/verify_view.dart';
 import '../view_model/forget_viewmodel.dart';
 
 class ForgetPasswordView extends StatefulWidget {
@@ -37,6 +40,18 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView>
 
     _phoneTextEditingController.addListener(() {
       _viewModel.setPhone(_phoneTextEditingController.text);
+    });
+
+    _viewModel.isUserLoggedInSuccessfullyStreamController.stream
+        .listen((isLoggedIn) {
+      if (isLoggedIn) {
+        // navigate to main screen
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          // _appPreferences.setUserLoggedIn();
+          //initVerifyCodeModule();
+          Go(context).push(page: const VerifyCodeForForgetPAssword());
+        });
+      }
     });
   }
 
@@ -217,6 +232,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView>
                               FocusManager.instance.primaryFocus?.unfocus(),
                           controller: _phoneTextEditingController,
                           decoration: const InputDecoration(
+                              focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
                               disabledBorder: InputBorder.none,
                               border: InputBorder.none,
@@ -231,6 +247,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView>
                     child: BottomWidgetWithBackgraundForForgetPassword(
                       text: 'Send code',
                       onTab: () {
+                        initVerifyCodeModule();
                         _viewModel.forgetPAsswordbyPhone();
                       },
                     ),

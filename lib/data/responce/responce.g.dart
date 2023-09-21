@@ -85,7 +85,7 @@ Map<String, dynamic> _$ForgetPasswordResponceToJson(
 ForgetPasswordByPhoneResponce _$ForgetPasswordByPhoneResponceFromJson(
         Map<String, dynamic> json) =>
     ForgetPasswordByPhoneResponce(
-      json['phone'] as String?,
+      json['code'] as String?,
     )
       ..statuse = json['statuse'] as int?
       ..message = json['message'] as String?;
@@ -95,13 +95,13 @@ Map<String, dynamic> _$ForgetPasswordByPhoneResponceToJson(
     <String, dynamic>{
       'statuse': instance.statuse,
       'message': instance.message,
-      'phone': instance.phone,
+      'code': instance.code,
     };
 
 VerfayCodeWithPhoneResponce _$VerfayCodeWithPhoneResponceFromJson(
         Map<String, dynamic> json) =>
     VerfayCodeWithPhoneResponce(
-      json['code'] as String?,
+      json['new_password'] as String?,
     )
       ..statuse = json['statuse'] as int?
       ..message = json['message'] as String?;
@@ -111,5 +111,5 @@ Map<String, dynamic> _$VerfayCodeWithPhoneResponceToJson(
     <String, dynamic>{
       'statuse': instance.statuse,
       'message': instance.message,
-      'code': instance.code,
+      'new_password': instance.newPassword,
     };

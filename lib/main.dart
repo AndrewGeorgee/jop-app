@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:job_application/core/theme/theme.dart';
-import 'package:job_application/screen/forget_password/view/forget_password_view.dart';
+import 'package:job_application/screen/getstart/get_start_view.dart';
 
 import 'core/utils/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initAppModules();
-  initForgetPasswordModule();
   runApp(const MyApp());
   // runApp(
   //   DevicePreview(
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       // builder: DevicePreview.appBuilder,
       theme: AppTheme.lightTheme(context),
 
-      home: const ForgetPasswordView(),
+      home: const GetStartView(),
     );
   }
 }

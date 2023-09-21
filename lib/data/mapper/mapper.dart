@@ -42,6 +42,12 @@ extension ForgetPasswordResponseMapper on ForgetPasswordResponce? {
 extension ForgetPasswordByPhoneResponseMapper
     on ForgetPasswordByPhoneResponce? {
   String toDomain() {
-    return this?.phone?.orEmpty() ?? Constant.empty;
+    return this?.code?.orEmpty() ?? Constant.empty;
+  }
+}
+
+extension VerifyCodeMApper on VerfayCodeWithPhoneResponce? {
+  String toDomain() {
+    return this?.newPassword?.orEmpty() ?? Constant.empty;
   }
 }

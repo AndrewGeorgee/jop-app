@@ -4,7 +4,9 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:job_application/core/utils/app_pre.dart';
 import 'package:job_application/core/utils/network_info.dart';
 import 'package:job_application/domain/usecase/regiser_usecase.dart';
+import 'package:job_application/domain/usecase/verify_use_case.dart';
 import 'package:job_application/screen/forget_password/view_model/forget_viewmodel.dart';
+import 'package:job_application/screen/verify_code/verify_view_model.dart';
 import 'package:pro_shered_preference/pro_shered_preference.dart';
 
 import '../../data/data_source/remote_data_source.dart';
@@ -71,5 +73,13 @@ initForgetPasswordModule() {
         () => ForgotPasswordByPhoneUseCase(instance()));
     instance.registerFactory<ForgetViewModel>(
         () => ForgetViewModel(instance(), instance()));
+  }
+}
+
+initVerifyCodeModule() {
+  if (!GetIt.I.isRegistered<VerifyUsecas>()) {
+    instance.registerFactory<VerifyUsecas>(() => VerifyUsecas(instance()));
+    instance
+        .registerFactory<VerifyViewModel>(() => VerifyViewModel(instance()));
   }
 }

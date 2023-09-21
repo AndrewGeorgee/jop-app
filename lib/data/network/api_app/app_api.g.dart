@@ -146,11 +146,11 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<ForgetPasswordByPhoneResponce> getVerifayCode(String phone) async {
+  Future<ForgetPasswordByPhoneResponce> getVerifayCode(String code) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'phone': phone};
+    final _data = {'verify_code': code};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ForgetPasswordByPhoneResponce>(Options(
       method: 'GET',

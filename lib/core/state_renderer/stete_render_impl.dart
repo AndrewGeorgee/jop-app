@@ -4,7 +4,6 @@ import 'package:job_application/core/state_renderer/state_renderer.dart';
 import '../utils/constance.dart';
 import '../utils/text.dart';
 
-
 abstract class FlowState {
   StateRendererType getStateRendererType();
 
@@ -133,8 +132,8 @@ extension FlowStateExtension on FlowState {
           dismissDialog(context);
 
           // show popup
-          showPopup(context, StateRendererType.popupSuccess, getMessage(),
-              title: AppStrings.success);
+          // showPopup(context, StateRendererType.popupSuccess, getMessage(),
+          //     title: AppStrings.success);
           // return content ui of the screen
           return contentScreenWidget;
         }

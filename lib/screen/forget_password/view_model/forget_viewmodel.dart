@@ -17,6 +17,8 @@ class ForgetViewModel extends BaseViewModel
   final StreamController _isAllInputValidStreamController =
       StreamController<void>.broadcast();
   final ForgotPasswordUseCase forgotPasswordUseCase;
+  StreamController isUserLoggedInSuccessfullyStreamController =
+      StreamController<bool>();
   final ForgotPasswordByPhoneUseCase forgotPasswordByPhoneUseCase;
   var phone = "";
   var email = "";
@@ -34,6 +36,7 @@ class ForgetViewModel extends BaseViewModel
     _emailStreamController.close();
     _phoneStreamController.close();
     _isAllInputValidStreamController.close();
+    isUserLoggedInSuccessfullyStreamController.close();
   }
 
   @override
@@ -41,9 +44,13 @@ class ForgetViewModel extends BaseViewModel
     inputState.add(
         LoadingState(stateRendererType: StateRendererType.popupLoadingState));
     (await forgotPasswordUseCase.execute(email)).fold(
-        (l) => inputState
-            .add(ErrorState(StateRendererType.popupErrorState, l.message)),
-        (r) => inputState.add(SuccessState(r)));
+      (l) => inputState
+          .add(ErrorState(StateRendererType.popupErrorState, l.message)),
+      (data) {
+        inputState.add(SuccessState(data));
+        isUserLoggedInSuccessfullyStreamController.add(true);
+      },
+    );
   }
 
   @override
@@ -89,6 +96,7 @@ class ForgetViewModel extends BaseViewModel
         (l) => inputState
             .add(ErrorState(StateRendererType.popupErrorState, l.message)),
         (r) => inputState.add(SuccessState(r)));
+    isUserLoggedInSuccessfullyStreamController.add(true);
   }
 
   @override
