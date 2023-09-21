@@ -36,12 +36,12 @@ class ResetPasswordview extends StatelessWidget {
               height: SizeConfig.blockSizeVertical! * 4,
             ),
             Text(
-              'Forgot Password',
+              'Reset Password',
               textAlign: TextAlign.center,
               style: Styles.textStyles28,
             ),
             Text(
-              'Enter your email or phone number, we will send you verification code',
+              'Enter your new password and confirm the new password to reset password',
               textAlign: TextAlign.center,
               style: Styles.textStyles15.copyWith(fontSize: AppSize.s16),
             ),
@@ -79,9 +79,7 @@ class ResetPasswordview extends StatelessWidget {
                 hintStyle: Styles.textStylesHintText,
               ),
             ),
-            SizedBox(
-              height: SizeConfig.blockSizeVertical! * 4,
-            ),
+            const Spacer(),
             SizedBox(
               width: SizeConfig.screenWidth,
               child: BottomWidgetWithBackgraundForForgetPassword(

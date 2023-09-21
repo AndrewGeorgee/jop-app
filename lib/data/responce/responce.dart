@@ -75,3 +75,14 @@ class ForgetPasswordByPhoneResponce extends BaseResponse {
   factory ForgetPasswordByPhoneResponce.fromJson(Map<String, dynamic> json) =>
       _$ForgetPasswordByPhoneResponceFromJson(json);
 }
+
+@JsonSerializable()
+class VerfayCodeWithPhoneResponce extends BaseResponse {
+  @JsonKey(name: 'code')
+  String? code;
+  VerfayCodeWithPhoneResponce(this.code);
+  Map<String, dynamic> toJson() => _$VerfayCodeWithPhoneResponceToJson(this);
+
+  factory VerfayCodeWithPhoneResponce.fromJson(Map<String, dynamic> json) =>
+      _$VerfayCodeWithPhoneResponceFromJson(json);
+}

@@ -31,4 +31,9 @@ abstract class AppServiceClient {
   Future<ForgetPasswordByPhoneResponce> forgetPasswordByPhone(
     @Field('phone') String phone,
   );
+
+  @GET("/customer/verify")
+  Future<ForgetPasswordByPhoneResponce> getVerifayCode(
+    @Field('phone') String phone,
+  );
 }

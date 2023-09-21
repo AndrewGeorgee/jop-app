@@ -149,6 +149,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView>
                     height: SizeConfig.blockSizeVertical! * 6,
                   ),
                   TextFormField(
+                    onTapOutside: (event) =>
+                        FocusManager.instance.primaryFocus?.unfocus(),
                     controller: _emailTextEditingController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -211,8 +213,12 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView>
                           child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: TextFormField(
+                          onTapOutside: (event) =>
+                              FocusManager.instance.primaryFocus?.unfocus(),
                           controller: _phoneTextEditingController,
                           decoration: const InputDecoration(
+                              enabledBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
                               border: InputBorder.none,
                               hintText: 'Phone Number'),
                         ),
